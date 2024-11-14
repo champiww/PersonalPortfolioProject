@@ -18,7 +18,18 @@
     </head>
     <body>
         <div class="container mt-3">
-            <h1 style="margin-bottom: 1.5em">Welcome to my portfolio</h1>
+            <div
+                style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 2em;
+                    margin-top: 2em;
+                "
+            >
+                <h1 style="margin-right: 25%">Welcome to my portfolio</h1>
+                <a href="/blog" style="font-size: 1.5em">Blog</a>
+            </div>
             {% for project in projects %}
             <h2>{{project.title}}</h2>
             <ul class="list-group">

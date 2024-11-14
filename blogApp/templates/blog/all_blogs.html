@@ -18,7 +18,27 @@
     </head>
     <body>
         <div class="container mt-3">
-            <h1>Hola</h1>
+            <div>
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 2em;
+                        margin-top: 2em;
+                    "
+                >
+                    <h1 style="margin-right: 25%">Welcome to my blog</h1>
+                    <a href="/" style="font-size: 1.5em">Home page</a>
+                </div>
+            </div>
+            {% for post in blog %}
+            <div class="container mt-5">
+                <h3>{{post.title}}</h3>
+                <p style="font-weight: bold">{{post.date}}</p>
+                <p>{{post.description}}</p>
+            </div>
+            {% endfor %}
         </div>
     </body>
 </html>
