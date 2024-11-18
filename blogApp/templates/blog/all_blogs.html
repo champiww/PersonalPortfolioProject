@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -29,14 +30,23 @@
                     "
                 >
                     <h1 style="margin-right: 25%">Welcome to my blog</h1>
-                    <a href="/" style="font-size: 1.5em">Home page</a>
+                    <a href="{% url 'home' %}" style="font-size: 1.5em"
+                        >Home page</a
+                    >
                 </div>
             </div>
+
+            <h2>Sergio has written {{ blog.count }} blogs</h2>
+
             {% for post in blog %}
             <div class="container mt-5">
-                <h3>{{post.title}}</h3>
-                <p style="font-weight: bold">{{post.date}}</p>
-                <p>{{post.description}}</p>
+                <a href="{% url 'blogApp:detail' post.id %}"
+                    ><h3>{{post.title}}</h3></a
+                >
+                <p style="font-weight: bold">
+                    {{post.date|date:'M d Y'|upper}}
+                </p>
+                <p>{{post.description|safe|truncatechars:100}}</p>
             </div>
             {% endfor %}
         </div>
