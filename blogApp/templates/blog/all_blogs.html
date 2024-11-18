@@ -1,54 +1,19 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-        />
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"
-        ></script>
-        <title>All blogs</title>
-    </head>
-    <body>
-        <div class="container mt-3">
-            <div>
-                <div
-                    style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin-bottom: 2em;
-                        margin-top: 2em;
-                    "
-                >
-                    <h1 style="margin-right: 25%">Welcome to my blog</h1>
-                    <a href="{% url 'home' %}" style="font-size: 1.5em"
-                        >Home page</a
-                    >
-                </div>
-            </div>
+{% extends "portfolio/base.html" %} {% load static %} {% block content %}
 
-            <h2>Sergio has written {{ blog.count }} blogs</h2>
+<h1 id="blogtitle" class="font-weight-bold text-center">Blog</h1>
 
-            {% for post in blog %}
-            <div class="container mt-5">
-                <a href="{% url 'blogApp:detail' post.id %}"
-                    ><h3>{{post.title}}</h3></a
-                >
-                <p style="font-weight: bold">
-                    {{post.date|date:'M d Y'|upper}}
-                </p>
-                <p>{{post.description|safe|truncatechars:100}}</p>
-            </div>
-            {% endfor %}
-        </div>
-    </body>
-</html>
+<h3 class="text-center mb-5">
+    Sergio has written {{ blog.count }} blog{{ blog.count|pluralize }}
+</h3>
+
+{% for post in blog %}
+<div class="row justify-content-center my-3">
+    <div class="col-md-10">
+        <a href="{% url 'blogApp:detail' post.id %}">
+            <h2>{{ post.title }}</h2>
+        </a>
+        <h5 class="text-muted">{{ post.date|date:'M d Y'|upper }}</h5>
+        <h4>{{ post.description|striptags|truncatechars:100 }}</h4>
+    </div>
+</div>
+{% endfor %} {% endblock %}
