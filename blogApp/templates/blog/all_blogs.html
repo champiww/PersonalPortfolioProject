@@ -1,6 +1,6 @@
 {% extends "portfolio/base.html" %} {% load static %} {% block content %}
 
-<h1 id="blogtitle" class="font-weight-bold text-center">Blog</h1>
+<h3 id="blogtitle" class="font-weight-bold text-center">Blog</h3>
 
 <h3 class="text-center mb-5">
     Sergio has written {{ blog.count }} blog{{ blog.count|pluralize }}
@@ -13,7 +13,8 @@
             <h2>{{ post.title }}</h2>
         </a>
         <h5 class="text-muted">{{ post.date|date:'M d Y'|upper }}</h5>
-        <h4>{{ post.description|striptags|truncatechars:100 }}</h4>
+        <h5>{{ post.description|striptags|truncatechars:100 }}</h5>
     </div>
 </div>
+<hr />
 {% endfor %} {% endblock %}

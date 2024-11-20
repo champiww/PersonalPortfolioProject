@@ -7,8 +7,12 @@
 }
 
 body {
-    background-color: #eeeeee;
+    background-color: #f2f2f2;
     font-family: 'Lato', sans-serif;
+}
+
+.textSize {
+    font-size: 1.5em;
 }
 
 #blogtitle {
